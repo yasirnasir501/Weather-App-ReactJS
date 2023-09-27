@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weatherBg{
+  background: url('https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1748&q=80');
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* background-repeat: no-repeat; */
 }
 
-.App-link {
-  color: #61dafb;
+.heading{
+  color: #f1f1f1;
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weatherResult{
+  margin-top: 10px;
+  background-color: #f1f1f1;
+  height: 130px;
+  width: 500px;
+}
+
+.logobox{
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.logo{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.city{
+  font-size: 35px;
+}
+
+.temp{
+  font-size: 45px;
+}
+
+.txt1{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.txt2{
+  display: flex;
+  justify-content: center;
 }
