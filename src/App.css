@@ -14,6 +14,7 @@
 }
 
 .weatherResult{
+  /* background-image: url('https://store.hp.com/app/assets/images/uploads/prod/25-best-hd-wallpapers-laptops159561982840438.jpg'); */
   margin-top: 10px;
   background-color: #f1f1f1;
   height: 130px;
@@ -44,9 +45,11 @@
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  /* color: #f1f1f1; */
 }
 
 .txt2{
   display: flex;
   justify-content: center;
+  /* color: #f1f1f1; */
 }

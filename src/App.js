@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
@@ -8,10 +8,26 @@ const App = () => {
   const apiKey = 'aaa9c7fa8abe73e9f574c9544651762b'
 
   const [data, setData] = useState({});
+  const [inputCity, setInputCity] = useState('');
 
-  const getWeatherDetails = () => {
-    const apiURL = 'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid=' +apiKey
-    axios.get()
+  const getWeatherDetails = (cityName) => {
+    if (!cityName) return
+    const apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey
+    axios.get(apiURL).then((res) => {
+      console.log('response', res.data)
+      setData(res.data);
+    }).catch((err) => {
+      console.log('err', err)
+    })
+  }
+
+  const handleChangeInput = (e) => {
+    console.log('value', e.target.value)
+    setInputCity(e.target.value)
+  }
+
+  const handleSearch = () => {
+    getWeatherDetails(inputCity)
   }
 
   return (
@@ -21,21 +37,18 @@ const App = () => {
           <h1 className="heading">Weather App</h1>
 
           <div className="d-grid gap-1 col-3 mt-3">
-            <input type="text" className="search-Location" />
-            <button className="btn btn-primary">Search</button>
+            <input type="text" className="search-Location" onChange={handleChangeInput} value={inputCity}/>
+            <button className="btn btn-primary" onClick={handleSearch}>Search</button>
           </div>
           
           <div className="weatherResult">
-            {/* <div className="logobox">
-              <img className="logo" src="https://plus.unsplash.com/premium_photo-1681488162344-542e0b7c3378?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"/>
-            </div> */}
             
             <div className="txt1">
-              <h5 className="city">Karachi,Pakistan</h5>
+              <h5 className="city">{data.name}</h5>
             </div>
 
             <div className="txt2">
-              <h6 className="temp">35°C</h6>
+              <h6 className="temp">{((data?.main?.temp)-273.15) .toFixed(2)}°C</h6>
             </div>
             
           </div>
